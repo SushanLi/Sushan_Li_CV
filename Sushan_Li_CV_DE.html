@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipl.-Ing. Sushan Li - Senior Embedded Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 头部样式 - 使用sticky定位实现滚动置顶 */
+        .header-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #f0f0f0;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .personal-info {
+            flex: 1;
+        }
+        
+        .name-title h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .name-title h2 {
+            font-size: 20px;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+        
+        .icon {
+            width: 20px;
+            text-align: center;
+            color: #3498db;
+        }
+        
+        /* 过渡分割线 */
+        .transition-divider {
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            width: 100%;
+        }
+        
+        /* 主体内容 */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 24px;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 70px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .profile-text {
+            font-size: 16px;
+            color: #444;
+            text-align: justify;
+        }
+        
+        /* 工作经验样式 */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .job-title {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 18px;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .period {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .project {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+        
+        .responsibilities {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .sub-section {
+            margin-top: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .sub-section-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+        
+        /* 技能样式 */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .skill-category ul {
+            padding-left: 20px;
+        }
+        
+        .skill-category li {
+            margin-bottom: 6px;
+            color: #555;
+        }
+        
+        /* 语言样式 */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .language-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+                padding: 25px 20px;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .main-content {
+                padding: 25px 20px;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 20px 15px;
+            }
+            
+            .name-title h1 {
+                font-size: 28px;
+            }
+            
+            .name-title h2 {
+                font-size: 18px;
+            }
+            
+            .languages {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <div class="header-container">
+        <div class="header">
+            <div class="photo-container">
+                <!-- 用户需要自己保存photo.jpg到相同目录 -->
+                <img src="photo.jpg" alt="Foto von Dipl.-Ing. Sushan Li">
+            </div>
+            <div class="personal-info">
+                <div class="name-title">
+                    <h1>Dipl.-Ing. Sushan Li</h1>
+                    <h2>Senior Embedded Software Engineer (Automotive / AUTOSAR)</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <span>Haydnstr. 21 88094 Oberteuringen, Deutschland</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">🌍</span>
+                        <span>Staatsangehörigkeit: Deutsch</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <span>sushan.li@hotmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>+49 176 6471 6370</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 过渡分割线 -->
+        <div class="transition-divider"></div>
+    </div>
+    
+    <!-- 主体内容 -->
+    <div class="main-content">
+        <!-- Profil部分 -->
+        <section class="section">
+            <h2 class="section-title">Profil</h2>
+            <p class="profile-text">
+                Senior Embedded Software Engineer mit über 7 Jahren Erfahrung in der seriennahen Entwicklung sicherheitskritischer Automotive-Software. Schwerpunkt auf AUTOSAR-Architektur, Gateway-Systemen, FoD, SWaP sowie Software-Security im OEM- und Tier-1-Umfeld.<br>
+                Ausgeprägte Erfahrung in der systematischen Debug- und Ursachenanalyse in AUTOSAR-basierten Gateway- und Fahrzeugplattformprojekten, insbesondere bei Initialisierungs-, Timing- und Kommunikationsproblemen in Serienprojekten.<br>
+                Zertifizierte ASPICE-Assessorin mit Erfahrung in Projektbewertungen, internen Assessments und KI-gestützten Analyseansätzen.
+            </p>
+        </section>
+        
+        <!-- Berufserfahrung部分 -->
+        <section class="section">
+            <h2 class="section-title">Berufserfahrung</h2>
+            
+        <div class="experience-item">
+            <h3 class="job-title">Software Ingenieurin</h3>
+            <div class="company">Aumovio SE (bevor 09/2025: Continental AG), Markdorf</div>
+            <span class="period">01/2022 – heute</span>
+
+            <div class="project">Projekt: OEM-Gateway- und Fahrzeugplattformprojekte (u. a. VW MQB)</div>
+            <ul class="responsibilities">
+                <li>Entwicklung und Serienintegration von AUTOSAR-basierten Fahrzeugapplikationen in OEM-nahen Serienprojekten</li>
+                <li>Schwerpunkt auf Gateway-Systemen, Function on Demand (FoD), Software as a Product (SWaP) sowie Komponentenschutz</li>
+                <li>Umsetzung sicherheits- und kryptographierelevanter Funktionen für marktreife Steuergeräte</li>
+                <li>Systematische Analyse und Debugging von AUTOSAR-basierten Gateway-Funktionen sowie Ursachenanalyse von Initialisierungs-, Timing- und CAN-Kommunikationsproblemen auf ECU- und Systemebene</li>
+                <li>Debugging von C-Software im Zusammenspiel von AUTOSAR BSW, RTE und Application Software in seriennahen Fahrzeugplattformen</li>
+                <li>Enge Zusammenarbeit mit System-, Architektur- und Testteams im OEM- und Tier-1-Umfeld</li>
+            </ul>
+
+            <div class="project">ASPICE & Prozesse</div>
+            <ul class="responsibilities">
+                <li>Teilnahme an einer vollständigen ASPICE-Projektbewertung
+            im Rahmen eines BMW-Projekts</li>
+                <li>Mitwirkung an internen Mini-Assessments sowie Anwendung
+            ASPICE-konformer Entwicklungs- und Reviewprozesse
+            in agilen Projektumgebungen</li>
+                <li>Mitarbeit an einem KI-gestützten Schulungsprojekt
+            zur ASPICE-4.0-Ausbildung (AI-Agent-unterstütztes Training)</li>
+            </ul>
+            </div>
+
+            
+            <div class="experience-item">
+                <h3 class="job-title">Software Ingenieurin (Leiharbeitskraft)</h3>
+                <div class="company">DIEHL Aerospace GmbH, Nürnberg</div>
+                <span class="period">09/2021 – 12/2021</span>
+                <div class="project">Projekt: Notbeleuchtungssystem Airbus A320</div>
+                <ul class="responsibilities">
+                    <li>Pflege, Anpassung und Review sicherheitskritischen C-Source-Codes gemäß MISRA-C-Richtlinien</li>
+                    <li>Strukturierte Analyse von System- und Equipment-Anforderungen</li>
+                    <li>Ableitung, Spezifikation und Nachverfolgung von Softwareanforderungen</li>
+                    <li>Mitarbeit an qualitäts- und sicherheitsrelevanten Entwicklungsprozessen im Luftfahrtumfeld</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Elternzeit und Weiterbildung</h3>
+                <span class="period">12/2019 – 08/2021</span>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Software Ingenieurin (Leiharbeitskraft)</h3>
+                <div class="company">Linde Material Handling GmbH, Aschaffenburg</div>
+                <span class="period">05/2018 – 11/2019</span>
+                <div class="project">Projekt: Embedded-Gegenschallsystem für Verbrennungsgabelstapler</div>
+                <ul class="responsibilities">
+                    <li>Entwicklung und Integration einer Embedded-Softwarelösung für ein aktives Gegenschallsystem</li>
+                    <li>Portierung und Optimierung von Noise-Cancelling-Algorithmen für ressourcenbeschränkte Mikrocontroller</li>
+                    <li>Anpassung der Algorithmen an Hardware- und Echtzeitrestriktionen</li>
+                    <li>Softwareentwicklung und -validierung nach agilen Methoden</li>
+                    <li>Messdatenerfassung und -analyse über CAN-Bus mit Vector CANape</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Wissenschaftliche Mitarbeiterin</h3>
+                <div class="company">Technische Universität Darmstadt, Fachbereich Maschinenbau</div>
+                <span class="period">10/2012 – 10/2017</span>
+                <ul class="responsibilities">
+                    <li>Mitarbeit in DFG-Forschungsprojekten zur Bewertung von Sensitivität, Zuverlässigkeit und Unsicherheit mechanischer und adaptronischer Systeme</li>
+                    <li>Entwicklung automatisierter Simulations- und Auswertungsworkflows in Python</li>
+                    <li>Systemmodellierung, Simulation und Bewertung in C und MATLAB</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Studium und Weiterbildung部分 -->
+        <section class="section">
+            <h2 class="section-title">Studium und Weiterbildung</h2>
+            
+            <div class="skill-category">
+                <h4>Akademische Abschlüsse</h4>
+                <ul>
+                    <li><strong>Diplom-Ingenieurin (Dipl.-Ing.)</strong>, Allgemeiner Maschinenbau, Karlsruher Institut für Technologie (KIT), Deutschland<br>
+                    Diplomarbeit: <em>Active moving mechanism of endoscopy capsule</em></li>
+                    <li><strong>Bachelor</strong>, Allgemeiner Maschinenbau, South China University of Technology, Guangzhou, China<br>
+                    Bachelorarbeit: <em>Design of the expansion part for a bicycle ergometer</em></li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Weiterbildungen & Zertifikate</h4>
+                <ul>
+                    <li><strong>Künstliche Intelligenz & Agile Softwareentwicklung</strong>, Aumovio / Continental interne Lernplattform (seit 01/2024)</li>
+                    <li><strong>Project Management Professional (PMP)</strong>, Online Training (05/2024 – 10/2024)</li>
+                    <li><strong>Microsoft Azure Fundamentals</strong>, Online Training (07/2021 – 08/2021)</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h4>Coursera Zertifikate (09/2019 – 06/2021)</h4>
+                <ul>
+                    <li>Machine Learning (Stanford University)</li>
+                    <li>Deep Learning</li>
+                    <li>An Introduction to Programming the Internet of Things (IoT), University of California, Irvine</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Fachkenntnisse部分 -->
+        <section class="section">
+            <h2 class="section-title">Fachkenntnisse</h2>
+                <div class="skill-category">
+                    <ul>
+                        <li>Embedded-Softwareentwicklung für Automotive- und sicherheitskritische Systeme in seriennahen Projekten</li>
+                        <li>AUTOSAR-Architektur und -Programmierung in Gateway- und Fahrzeugplattformumgebungen</li>
+                        <li>Systematische Debug- und Ursachenanalyse von C-Software in AUTOSAR-basierten OEM-Serienprojekten</li>
+                        <li>ASPICE-konforme Softwareentwicklung und Projektbewertungen in agilen Automotive-Umgebungen</li>
+                        <li>Anwendung von KI- und ML-Methoden zur Analyseunterstützung und algorithmischen Optimierung</li>
+
+                    </ul>
+                </div>
+        </section>
+        
+        <!-- Software & Tools部分 -->
+        <section class="section">
+            <h2 class="section-title">Software & Tools</h2>
+            <div class="skills-list">
+                <div class="skill-category">
+                    <h4>Programmiersprachen:</h4>
+                    <ul>
+                        <li>C (sehr gut)</li>
+                        <li>Python (sehr gut)</li>
+                        <li>MATLAB (sehr gut)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Automotive & Embedded Tools:</h4>
+                    <ul>
+                        <li>Vector CANoe (sehr gut)</li>
+                        <li>Vector CANape (sehr gut)</li>
+                        <li>EB tresos (sehr gut)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Simulation & Analyse:</h4>
+                    <ul>
+                        <li>MATLAB & Simulink (sehr gut)</li>
+                        <li>ANSYS (gut)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Entwicklungsumgebungen:</h4>
+                    <ul>
+                        <li>Visual Studio Code (sehr gut)</li>
+                        <li>Eclipse (sehr gut)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Debug & Trace Tools:</h4>
+                    <ul>
+                        <li>iSYSTEM Debugger (sehr gut)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Versionsverwaltung & Kollaboration:</h4>
+                    <ul>
+                        <li>Git, GitHub (sehr gut)</li>
+                    </ul>
+                </div>
+ 
+                <div class="skill-category">
+                    <h4>Architektur & Requirements:</h4>
+                    <ul>
+                        <li>Enterprise Architect (gut)</li>
+                        <li>IBM DOORS / DOORS Next (gut)</li>
+                    </ul>
+                </div>
+                               
+                <div class="skill-category">
+                    <h4>Cloud / Plattformen:</h4>
+                    <ul>
+                        <li>Microsoft Azure (Grundlagen)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sprachen部分 -->
+        <section class="section">
+            <h2 class="section-title">Sprachen</h2>
+            <div class="languages">
+                <div class="language-item">
+                    <div class="language-name">Chinesisch</div>
+                    <div>Muttersprache</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Deutsch</div>
+                    <div>fließend in Wort und Schrift</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Englisch</div>
+                    <div>fließend in Wort und Schrift</div>
+                </div>
+            </div>
+        </section>
+        
+
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            Oberteuringen, Januar 2026
+        </div>
+    </div>
+    
+    <script>
+        // 简单的滚动效果增强
+        window.addEventListener('scroll', function() {
+            const headerContainer = document.querySelector('.header-container');
+            if (window.scrollY > 50) {
+                headerContainer.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                headerContainer.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // 图片加载失败时的替代方案
+        const photoImg = document.querySelector('.photo-container img');
+        photoImg.addEventListener('error', function() {
+            // 如果照片不存在，创建一个包含名字首字母的占位符
+            const photoContainer = document.querySelector('.photo-container');
+            photoContainer.innerHTML = '<div style="width:100%;height:100%;background-color:#3498db;color:white;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:bold;">SL</div>';
+        });
+    </script>
+</body>
+</html>
