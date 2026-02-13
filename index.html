@@ -26,16 +26,58 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, 'Microsoft YaHei', sans-serif; }
         body { background-color: #f8f9fa; color: #333; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-        /* 语言切换器 */
-        .lang-switcher {
-            position: fixed; top: 20px; right: 20px; display: flex; gap: 8px; z-index: 2000;
-            background: rgba(255,255,255,0.95); padding: 5px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .lang-btn {
-            padding: 6px 14px; border: 1px solid #3498db; background: #fff; color: #3498db;
-            cursor: pointer; border-radius: 4px; font-size: 14px; font-weight: 600; transition: 0.3s;
-        }
-        .lang-btn.active { background: #3498db; color: #fff; }
+        /* 语言切换器容器：设为纵向排列，且靠右对齐 */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* 纵向排列核心命令 */
+    align-items: flex-end;    /* 所有按钮组向右对齐 */
+    gap: 10px;               /* 两行之间的间距 */
+    z-index: 2000;
+}
+
+/* 按钮组：横向排列内部按钮 */
+.btn-group {
+    display: flex;
+    gap: 8px; /* 按钮之间的横向间距 */
+}
+
+/* 基础按钮样式 (通用) */
+.lang-btn, .cert-btn {
+    padding: 6px 12px;
+    border: 1px solid #3498db;
+    background: rgba(255, 255, 255, 0.95);
+    color: #3498db;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+/* 激活状态和悬停效果 */
+.lang-btn.active, .lang-btn:hover, .cert-btn:hover {
+    background: #3498db;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 专门针对证明按钮的微调（可选：比如换个颜色区分） */
+.cert-btn {
+    border-color: #3498db; /* 使用深蓝色区分语言按钮 */
+    color: ##3498db;
+}
+.cert-btn:hover {
+    background: #3498db;
+    border-color: #3498db;
+}
 
         /* 简历通用样式 */
         ul { list-style-type: disc !important; padding-left: 20px; }
@@ -76,6 +118,8 @@
             .name-title h2 { font-size: 20px; }
             .contact-info { grid-template-columns: repeat(2, 1fr); gap: 10px 40px; }
             .skills-list { grid-template-columns: repeat(2, 1fr); }
+            .lang-switcher { top: 10px; right: 20px; gap: 5px;}
+            .lang-btn, .cert-btn {padding: 6px 8px;font-size: 13px;}
         }
 
         @media print {
@@ -90,10 +134,27 @@
 
     <!-- 语言切换器 -->
     <div class="lang-switcher">
+    <!-- 第一行：语言按钮 -->
+    <div class="btn-group">
         <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
         <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
         <button class="lang-btn" id="btn-zh" onclick="setLanguage('zh')">中文</button>
     </div>
+
+    <!-- 第二行：证明文件按钮 -->
+    <div class="btn-group cert-group">
+        <a href="Arbeitszeugnisse.pdf" target="_blank" class="cert-btn">
+            <span lang="de">Arbeitszeugnisse</span>
+            <span lang="en">Employment References</span>
+            <span lang="zh">工作证明</span>
+        </a>
+        <a href="Abschlusszeugnisse.pdf" target="_blank" class="cert-btn">
+            <span lang="de">Abschlusszeugnisse</span>
+            <span lang="en">Academic Certificates</span>
+            <span lang="zh">学历证明</span>
+        </a>
+    </div>
+</div>
 
     <!-- 头部 -->
     <header class="header-container">
